@@ -1,0 +1,39 @@
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.label {
+  font-size: 14px;
+  color: $text-secondary-color;
+}
+
+.input {
+  padding: 8px 10px;
+  border-radius: 4px;
+  border: 1px solid $input-border-color;
+  font-size: 14px;
+  outline: none;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+
+  &:focus {
+    border-color: $primary-color;
+    box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.2);
+  }
+}
+
+.inputError {
+  border-color: $error-text-color;
+
+  &:focus {
+    box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.25);
+  }
+}
+
+.error {
+  font-size: 12px;
+  color: $error-text-color;
+}

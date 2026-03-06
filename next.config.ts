@@ -1,7 +1,17 @@
-import type { NextConfig } from "next";
+import type {NextConfig} from 'next';
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  sassOptions: {
+    additionalData: `@use "@/styles/colors" as *;`,
+  },
+  async rewrites() {
+    return [
+      {
+        source: '/api/external/:path*',
+        destination: 'https://dummyjson.com/:path*',
+      },
+    ];
+  },
 };
 
 export default nextConfig;
