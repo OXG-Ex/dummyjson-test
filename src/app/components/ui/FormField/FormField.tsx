@@ -1,7 +1,8 @@
 'use client';
 
-import React from 'react';
+import React, {ReactNode} from 'react';
 import {useFormContext, type FieldValues, type Path} from 'react-hook-form';
+import {Txt} from '../Txt/Txt';
 import styles from './FormField.module.scss';
 
 interface FormFieldProps<T extends FieldValues> {
@@ -9,9 +10,16 @@ interface FormFieldProps<T extends FieldValues> {
   label: string;
   type?: React.HTMLInputTypeAttribute;
   placeholder?: string;
+  iconLeft?: ReactNode;
 }
 
-export const FormField = <T extends FieldValues>({name, label, type = 'text', placeholder}: FormFieldProps<T>) => {
+export const FormField = <T extends FieldValues>({
+  name,
+  label,
+  iconLeft,
+  type = 'text',
+  placeholder,
+}: FormFieldProps<T>) => {
   const {
     register,
     formState: {errors},
@@ -21,24 +29,28 @@ export const FormField = <T extends FieldValues>({name, label, type = 'text', pl
 
   return (
     <div className={styles.field}>
-      <label className={styles.label} htmlFor={name}>
+      <Txt color="muted" htmlFor={name}>
         {label}
-      </label>
+      </Txt>
 
-      <input
-        id={name}
-        type={type}
-        placeholder={placeholder}
-        className={`${styles.input} ${fieldError ? styles.inputError : ''}`}
-        aria-invalid={!!fieldError}
-        aria-describedby={fieldError ? `${name}-error` : undefined}
-        {...register(name)}
-      />
+      <div className={styles.inputWrapper}>
+        {iconLeft && <span className={styles.iconLeft}>{iconLeft}</span>}
+
+        <input
+          id={name}
+          type={type}
+          placeholder={placeholder}
+          className={`${styles.input} ${fieldError ? styles.inputError : ''} ${iconLeft ? styles.inputWithIcon : ''}`}
+          aria-invalid={!!fieldError}
+          aria-describedby={fieldError ? `${name}-error` : undefined}
+          {...register(name)}
+        />
+      </div>
 
       {fieldError && (
-        <span id={`${name}-error`} className={styles.error}>
+        <Txt id={`${name}-error`} className={styles.errorMessage} variant="caption" color="danger">
           {fieldError}
-        </span>
+        </Txt>
       )}
     </div>
   );

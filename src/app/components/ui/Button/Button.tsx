@@ -2,6 +2,7 @@
 
 import React, {ReactNode} from 'react';
 import {Loader} from '../Loader/Loader';
+import {Txt} from '../Txt/Txt';
 import styles from './Button.module.scss';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost';
@@ -20,6 +21,7 @@ export const Button: React.FC<ButtonProps> = ({
   isLoading = false,
   disabled,
   children,
+  iconLeft,
   className = '',
   ...rest
 }) => {
@@ -37,8 +39,16 @@ export const Button: React.FC<ButtonProps> = ({
 
   return (
     <button className={classes} disabled={isDisabled} {...rest}>
-      {isLoading && <Loader size="sm" />}
-      <span className={styles.label}>{children}</span>
+      <span className={styles.content}>
+        {iconLeft && <span className={styles.iconLeft}>{iconLeft}</span>}
+        <Txt color="contrast">{children}</Txt>
+      </span>
+
+      {isLoading && (
+        <span className={styles.loaderWrapper}>
+          <Loader size="sm" />
+        </span>
+      )}
     </button>
   );
 };

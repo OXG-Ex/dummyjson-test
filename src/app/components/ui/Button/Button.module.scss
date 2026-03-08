@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: center;
   gap: 6px;
-  border-radius: 6px;
+  border-radius: $round-md;
   border: 1px solid transparent;
   font-size: 14px;
   font-weight: 500;
@@ -24,6 +24,37 @@
     outline: 2px solid $primary-highlight-color;
     outline-offset: 2px;
   }
+
+  &:disabled,
+  &.disabled {
+    opacity: 0.8;
+    cursor: wait;
+    background-color: $disabled-bg-color;
+    color: $disabled-text-color;
+    border-color: transparent;
+    box-shadow: none;
+  }
+}
+
+.content {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.iconLeft {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: $text-contrast-color;
+}
+
+.loaderWrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
 }
 
 /* variants */
@@ -32,7 +63,7 @@
   color: $text-color;
   border-color: $primary-color;
 
-  &:hover {
+  &:hover:not(:disabled):not(.disabled) {
     background-color: $primary-hover-color;
     border-color: $primary-hover-color;
   }
@@ -42,6 +73,10 @@
   background-color: $secondary-color;
   color: $text-color;
   border-color: $secondary-color;
+
+  &:hover:not(:disabled):not(.disabled) {
+    background-color: rgba($primary-color, 0.08);
+  }
 }
 
 .variant_outline {
@@ -49,7 +84,7 @@
   color: $primary-color;
   border-color: $primary-color;
 
-  &:hover {
+  &:hover:not(:disabled):not(.disabled) {
     background-color: $background-color;
   }
 }
@@ -59,7 +94,7 @@
   color: $primary-color;
   border-color: transparent;
 
-  &:hover {
+  &:hover:not(:disabled):not(.disabled) {
     background-color: rgba($primary-color, 0.08);
   }
 }
@@ -78,15 +113,14 @@
 }
 
 .size_lg {
-  font-size: 16px;
-  padding-inline: 16px;
+  font-size: $gap-sm;
+  padding-inline: $gap-sm;
   padding-block: 10px;
 }
 
-/* state */
 .disabled {
   opacity: 0.8;
-  cursor: not-allowed;
+  cursor: wait;
   background-color: $disabled-bg-color;
   color: $disabled-text-color;
   border-color: transparent;
@@ -96,10 +130,4 @@
 .label {
   display: inline-flex;
   align-items: center;
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
 }

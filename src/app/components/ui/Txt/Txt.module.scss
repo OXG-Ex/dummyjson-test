@@ -1,0 +1,57 @@
+.txt {
+  margin: 0;
+}
+
+.variant_body {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.variant_caption {
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.variant_title {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.variant_subtitle {
+  font-size: $gap-sm;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.weight_regular {
+  font-weight: 400;
+}
+
+.weight_medium {
+  font-weight: 500;
+}
+
+.weight_bold {
+  font-weight: 600;
+}
+
+.color_primary {
+  color: $primary-color;
+}
+
+.color_muted {
+  color: $disabled-text-color;
+}
+
+.color_danger {
+  color: $error-text-color;
+}
+
+.color_default {
+  color: $text-color;
+}
+
+.color_contrast {
+  color: $text-contrast-color;
+}

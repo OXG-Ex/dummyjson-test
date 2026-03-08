@@ -8,6 +8,8 @@ import {Button} from '../../ui/Button/Button';
 import {FormField} from '../../ui/FormField/FormField';
 
 import {useAuthStore} from '@/app/shared/store/authStore';
+import {KeyRound, LogIn, User} from 'lucide-react';
+import {Txt} from '../../ui/Txt/Txt';
 import styles from './LoginForm.module.scss';
 
 const loginSchema = z.object({
@@ -24,7 +26,7 @@ const loginSchema = z.object({
 type LoginFormValues = z.infer<typeof loginSchema>;
 
 export const LoginForm: FC = () => {
-  const {login} = useAuthStore();
+  const {login, isLoading} = useAuthStore();
   const methods = useForm<LoginFormValues>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -41,11 +43,35 @@ export const LoginForm: FC = () => {
   return (
     <FormProvider {...methods}>
       <form className={styles.form} onSubmit={methods.handleSubmit(handleSubmit)} noValidate>
-        <FormField<LoginFormValues> name="username" label="Username" type="text" placeholder="Your username here" />
+        <Txt variant="title" weight="bold">
+          Login form
+        </Txt>
 
-        <FormField<LoginFormValues> name="password" label="Password" type="password" placeholder="Your password here" />
+        <div className={styles.fieldsWrapper}>
+          <FormField<LoginFormValues>
+            name="username"
+            label="Username:"
+            type="text"
+            placeholder="Your username here"
+            iconLeft={<User size={20} />}
+          />
 
-        <Button type="submit" variant="primary" size="md" style={{marginTop: 8}}>
+          <FormField<LoginFormValues>
+            name="password"
+            label="Password:"
+            type="password"
+            placeholder="Your password here"
+            iconLeft={<KeyRound size={20} />}
+          />
+        </div>
+        <Button
+          type="submit"
+          variant="primary"
+          size="md"
+          isLoading={isLoading}
+          iconLeft={<LogIn />}
+          className={styles.loginButton}
+        >
           Login
         </Button>
       </form>

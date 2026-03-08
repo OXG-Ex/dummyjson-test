@@ -17,12 +17,9 @@ const LoginPage: FC = () => {
 
   return (
     <div className={styles.login}>
-      <div className={styles.left}>
-        <div className={styles.form}>
-          <LoginForm />
-        </div>
+      <div className={styles.form}>
+        <LoginForm />
       </div>
-      <div className={styles.right}>ABOBA</div>
     </div>
   );
 };

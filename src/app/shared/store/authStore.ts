@@ -1,8 +1,8 @@
 'use client';
 
 import {create} from 'zustand';
-import type {LoginResponse} from '../api/types';
 import {loginRequest, refreshTokenRequest} from '../api/auth';
+import type {LoginResponse} from '../api/types';
 
 export interface AuthUser {
   id: number;
@@ -80,6 +80,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
         localStorage.setItem('user', JSON.stringify(user));
         localStorage.setItem('accessToken', data.accessToken);
         localStorage.setItem('refreshToken', data.refreshToken);
+        document.cookie = `isAuthenticated=true; path=/; max-age=${60 * 60};`;
       }
 
       set({
@@ -141,6 +142,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
       localStorage.removeItem('user');
       localStorage.removeItem('accessToken');
       localStorage.removeItem('refreshToken');
+      document.cookie = `isAuthenticated=false;`;
     }
 
     set({
