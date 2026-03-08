@@ -4,7 +4,7 @@
   padding: 0 2rem;
   justify-content: space-between;
   background: $background-color;
-  border-bottom: 1px solid $primary-color;
+  border-bottom: 3px solid $primary-color;
   height: $header-height;
 }
 
@@ -12,4 +12,9 @@
   display: flex;
   gap: 1rem;
   align-items: center;
+}
+
+.loginLink {
+  color: $text-contrast-color;
+  cursor: pointer;
 }

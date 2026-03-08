@@ -1,9 +1,9 @@
 .field {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 0.25rem;
   position: relative;
-  padding-bottom: 20px;
+  padding-bottom: 1.25rem;
   width: 100%;
 }
 
@@ -28,7 +28,7 @@
   padding: 8px 10px;
   border-radius: $round-md;
   border: 1px solid $input-border-color;
-  font-size: 14px;
+  font-size: $base-font-size;
   outline: none;
   transition:
     border-color 0.15s ease,
@@ -41,7 +41,7 @@
 }
 
 .inputWithIcon {
-  padding-left: 32px;
+  padding-left: 2rem;
 }
 
 .inputError {

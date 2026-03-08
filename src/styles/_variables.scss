@@ -7,17 +7,19 @@ $text-contrast-color: #fff;
 $text-secondary-color: #868686;
 $primary-highlight-color: #00c9ae;
 $primary-hover-color: #005549;
-$background-color: #c3fcf1;
+$background-color: #002b22;
 $shadow-color: #b3b3b3;
 $disabled-bg-color: #9ca3af;
 $disabled-text-color: #6b7280;
 $error-bg-color: #fee2e2;
 $error-text-color: #b91c1c;
 $input-border-color: #d1d5db;
+$card-border-color: #e5e7eb;
 
 // sizes
 $header-height: 3rem;
 $footer-height: 2.5rem;
+$base-font-size: 16px;
 
 // shapes
 $round-sm: 0.25rem;
@@ -29,3 +31,14 @@ $round-full: 50%;
 $gap-sm: 1rem;
 $gap-md: 2rem;
 $gap-lg: 3rem;
+$gap-xl: 6rem;
+
+//devices
+$mobile: 480px;
+$tablet: 768px;
+$desktop: 1024px;
+
+//mixins
+@function rem($pxValue) {
+  @return ($pxValue / $base-font-size) * 1rem;
+}

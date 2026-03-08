@@ -26,15 +26,21 @@ export const Header: React.FC = () => {
 
   return (
     <header className={styles.header}>
-      <Txt weight="bold">DummyJSON Shop</Txt>
+      <Txt weight="bold" color="contrast">
+        DummyJSON Shop
+      </Txt>
       <div>
-        {!isAuthenticated && <Link href="/login">Login</Link>}
+        {!isAuthenticated && (
+          <Link href="/login" className={styles.loginLink}>
+            Login
+          </Link>
+        )}
         {isAuthenticated && user && (
           <div className={styles.user}>
-            <Txt>
+            <Txt color="contrast">
               {user.firstName} {user.lastName}
             </Txt>
-            <Button onClick={logoutHandler} iconLeft={<LogOut size={20} />} size="sm">
+            <Button onClick={logoutHandler} iconLeft={<LogOut size={20} />} size="sm" variant="outline">
               Logout
             </Button>
           </div>

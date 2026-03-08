@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 400px;
+  max-width: rem(400px);
   gap: 1rem;
   align-items: center;
 }
@@ -15,15 +15,15 @@
   width: 100%;
 }
 
-@media (min-width: 640px) {
+@media (min-width: $tablet) {
   .form {
-    max-width: 420px;
+    max-width: rem(420px);
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: $desktop) {
   .form {
-    max-width: 760px;
+    max-width: rem(760px);
   }
 
   .loginButton {

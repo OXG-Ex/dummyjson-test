@@ -9,6 +9,7 @@ import {FormField} from '../../ui/FormField/FormField';
 
 import {useAuthStore} from '@/app/shared/store/authStore';
 import {KeyRound, LogIn, User} from 'lucide-react';
+import {ErrorMessage} from '../../ui/ErrorMessage/ErrorMessage';
 import {Txt} from '../../ui/Txt/Txt';
 import styles from './LoginForm.module.scss';
 
@@ -26,7 +27,7 @@ const loginSchema = z.object({
 type LoginFormValues = z.infer<typeof loginSchema>;
 
 export const LoginForm: FC = () => {
-  const {login, isLoading} = useAuthStore();
+  const {login, isLoading, error} = useAuthStore();
   const methods = useForm<LoginFormValues>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -64,6 +65,8 @@ export const LoginForm: FC = () => {
             iconLeft={<KeyRound size={20} />}
           />
         </div>
+
+        {error && <ErrorMessage message={error} />}
         <Button
           type="submit"
           variant="primary"

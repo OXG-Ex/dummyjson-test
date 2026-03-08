@@ -1,11 +1,11 @@
 .wrapper {
-  max-width: 1120px;
+  max-width: rem(1120px);
   margin: 0 auto;
-  padding: 24px $gap-sm;
+  padding: 1.5rem $gap-sm;
 }
 
 .title {
-  margin-bottom: $gap-sm;
+  margin-bottom: 0.75rem;
 }
 
 .grid {
@@ -13,15 +13,15 @@
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: $gap-sm;
 
-  @media (max-width: 1024px) {
+  @media (max-width: $desktop) {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: $tablet) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: $mobile) {
     grid-template-columns: repeat(1, minmax(0, 1fr));
   }
 }

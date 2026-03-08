@@ -4,6 +4,7 @@ const nextConfig: NextConfig = {
   sassOptions: {
     additionalData: `@use "@/styles/variables" as *;`,
   },
+  output: 'standalone',
   images: {
     remotePatterns: [
       {

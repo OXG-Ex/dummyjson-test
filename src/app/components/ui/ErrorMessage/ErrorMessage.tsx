@@ -10,7 +10,11 @@ export const ErrorMessage: React.FC<Props> = ({message, details}) => {
   return (
     <div className={styles.container}>
       <Txt color="danger">{message}</Txt>
-      {details && <Txt color="danger">{details}</Txt>}
+      {details && (
+        <Txt color="danger" variant="caption">
+          {details}
+        </Txt>
+      )}
     </div>
   );
 };
